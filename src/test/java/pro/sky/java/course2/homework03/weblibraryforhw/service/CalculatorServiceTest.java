@@ -11,55 +11,55 @@ class CalculatorServiceTest {
 
         @Test
         public void shouldReturnCorrectSum1() {
-            int result = out.getSum(NUM1, NUM2);
-            Assertions.assertEquals(SUM1, result);
+            int result = out.getSum(NUM1_POSITIVE, NUM2_POSITIVE);
+            Assertions.assertEquals(SUM1_POSITIVE, result);
         }
 
         @Test
         public void shouldReturnCorrectSum2() {
-            int result = out.getSum(NUM1, NUM3);
-         Assertions.assertEquals(SUM2, result);
+            int result = out.getSum(NUM1_POSITIVE, NUM3_NEGATIVE);
+         Assertions.assertEquals(SUM2_ZERO, result);
         }
 
         @Test
         public void shouldReturnCorrectSubtraction1() {
-            int result = out.getSubtraction(NUM1, NUM2);
-            Assertions.assertEquals(SUBTRACTION1, result);
+            int result = out.getSubtraction(NUM1_POSITIVE, NUM2_POSITIVE);
+            Assertions.assertEquals(SUBTRACTION1_POSITIVE, result);
         }
 
         @Test
         public void shouldReturnCorrectSubtraction2() {
-            int result = out.getSubtraction(NUM2, NUM3);
-            Assertions.assertEquals(SUBTRACTION2, result);
+            int result = out.getSubtraction(NUM2_POSITIVE, NUM3_NEGATIVE);
+            Assertions.assertEquals(SUBTRACTION2_NEGATIVE, result);
         }
 
         @Test
         public void shouldReturnCorrectMultiplication1() {
-            int result = out.getMultiplication(NUM1, NUM2);
-            Assertions.assertEquals(MULTIPLICATION1, result);
+            int result = out.getMultiplication(NUM1_POSITIVE, NUM2_POSITIVE);
+            Assertions.assertEquals(MULTIPLICATION1_POSITIVE, result);
         }
 
         @Test
         public void shouldReturnCorrectMultiplication2() {
-            int result = out.getMultiplication(NUM1, NUM3);
-            Assertions.assertEquals(MULTIPLICATION2, result);
+            int result = out.getMultiplication(NUM1_POSITIVE, NUM3_NEGATIVE);
+            Assertions.assertEquals(MULTIPLICATION2_NEGATIVE, result);
         }
 
         @Test
-        public void shouldReturnCorrectDivision1() {
-            int result = out.getDivision(NUM1, NUM2);
-            Assertions.assertEquals(DIVISION1, result);
+        public void shouldReturnCorrectPositiveDivision1() {
+            int result = out.getDivision(NUM1_POSITIVE, NUM2_POSITIVE);
+            Assertions.assertEquals(DIVISION1_POSITIVE, result);
         }
 
         @Test
-        public void shouldReturnCorrectDivision2() {
-            int result = out.getDivision(NUM1, NUM3);
-            Assertions.assertEquals(DIVISION2, result);
+        public void shouldReturnCorrectNegativeDivision2() {
+            int result = out.getDivision(NUM1_POSITIVE, NUM3_NEGATIVE);
+            Assertions.assertEquals(DIVISION2_NEGATIVE, result);
         }
 
         @Test
         public void shouldThrowIllegalArgumentExceptionIfDivisionByZero() {
-            Assertions.assertThrows(IllegalArgumentException.class, ()-> division(NUM1, NUM4), "You can't divide by zero!");
+            Assertions.assertThrows(IllegalArgumentException.class, ()-> division(NUM1_POSITIVE, ZERO), "You can't divide by zero!");
         }
 
         public int division(int num1, int num2) {

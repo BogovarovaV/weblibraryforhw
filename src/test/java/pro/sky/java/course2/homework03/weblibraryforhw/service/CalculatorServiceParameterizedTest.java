@@ -14,27 +14,27 @@ public class CalculatorServiceParameterizedTest {
     private final CalculatorService out = new CalculatorServiceImpl();
 
     public static Stream<Arguments> provideParamsForSumTest() {
-        return Stream.of(Arguments.of(NUM1, NUM2, SUM1),
-                        Arguments.of(NUM1, NUM3, SUM2),
-                        Arguments.of(NUM2, NUM3, SUM3));
+        return Stream.of(Arguments.of(NUM1_POSITIVE, NUM2_POSITIVE, SUM1_POSITIVE),
+                        Arguments.of(NUM1_POSITIVE, NUM3_NEGATIVE, SUM2_ZERO),
+                        Arguments.of(NUM2_POSITIVE, NUM3_NEGATIVE, SUM3_NEGATIVE));
     }
 
     public static Stream<Arguments> provideParamsForSubtractionTest() {
-        return Stream.of(Arguments.of(NUM1, NUM2, SUBTRACTION1),
-                        Arguments.of(NUM2, NUM3, SUBTRACTION2),
-                        Arguments.of(NUM1, NUM3, SUBTRACTION3));
+        return Stream.of(Arguments.of(NUM1_POSITIVE, NUM2_POSITIVE, SUBTRACTION1_POSITIVE),
+                        Arguments.of(NUM2_POSITIVE, NUM3_NEGATIVE, SUBTRACTION2_NEGATIVE),
+                        Arguments.of(NUM1_POSITIVE, NUM3_NEGATIVE, SUBTRACTION3_ZERO));
     }
 
     public static Stream<Arguments> provideParamsForMultiplicationTest() {
-        return Stream.of(Arguments.of(NUM1, NUM2, MULTIPLICATION1),
-                        Arguments.of(NUM1, NUM3, MULTIPLICATION2),
-                        Arguments.of(NUM1, NUM4, MULTIPLICATION3));
+        return Stream.of(Arguments.of(NUM1_POSITIVE, NUM2_POSITIVE, MULTIPLICATION1_POSITIVE),
+                        Arguments.of(NUM1_POSITIVE, NUM3_NEGATIVE, MULTIPLICATION2_NEGATIVE),
+                        Arguments.of(NUM1_POSITIVE, ZERO, MULTIPLICATION3_ZERO));
     }
 
     public static Stream<Arguments> provideParamsForDivisionTest() {
-        return Stream.of(Arguments.of(NUM1, NUM2, DIVISION1),
-                        Arguments.of(NUM1, NUM3, DIVISION2),
-                        Arguments.of(NUM3, NUM2, DIVISION3));
+        return Stream.of(Arguments.of(NUM1_POSITIVE, NUM2_POSITIVE, DIVISION1_POSITIVE),
+                        Arguments.of(NUM1_POSITIVE, NUM3_NEGATIVE, DIVISION2_NEGATIVE),
+                        Arguments.of(NUM3_NEGATIVE, NUM2_POSITIVE, DIVISION3_NEGATIVE));
     }
 
     @ParameterizedTest
